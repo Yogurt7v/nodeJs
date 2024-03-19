@@ -38,7 +38,7 @@ yargs.command({
             demandOption: true,
         }
     },
-    handler({id}){
+   async handler({id}){
         removeId(id)
     },
 
