@@ -37,7 +37,7 @@ async function printNotes(){
 
 async function removeId(id){
     const notes =  await getNotes()
-    notes.filter((note) => {
+    notes.forEach((note) => {
         if(note.id !== id){
             notes.pop(note)
         }
