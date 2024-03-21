@@ -37,7 +37,7 @@ async function printNotes(){
 
 async function removeId(id){
     const notes =  await getNotes()
-    notes.forEach((note) => {
+    notes.filter((note) => {
         if(note.id !== id){
             notes.pop(note)
         }
@@ -46,6 +46,18 @@ async function removeId(id){
 }
 
 
+async function editNote(id, newTitle){
+        const notes =  await getNotes()
+        notes.filter((note) => {
+            if(note.id == id){
+                note.title = newTitle
+            }
+        })
+        await fs.writeFile(notesPath, JSON.stringify(notes))
+        console.log((chalk.bgGreen('Note was edited')));
+}
+
+
 module.exports = {
-    addNote, getNotes, printNotes, removeId
+    addNote, getNotes, printNotes, removeId, editNote
 }
